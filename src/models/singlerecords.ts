@@ -170,10 +170,10 @@ export default {
     effects: {
         *getRecords({ payload }: any, { call, put }: any) {
             const data = yield call(getSingleRecords);
-            console.log("data: ",data);
+            console.log("后端返回的数据: ",data);
             yield put({
                 type: 'update',
-                new_item: data[0]
+                new_item: data
             });
         },
     },
