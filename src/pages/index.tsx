@@ -73,14 +73,14 @@ export default () => {
       <Card style={{ overflowX: 'scroll' }}>
         <AnalysisObesity />
       </Card>
-      <Card>
+      <Card style={{ overflowX: 'scroll' }}>
         <AnalysisOfMuscleFat />
         {/* <Tester /> */}
       </Card>
-      <Card>
+      <Card style={{ overflowX: 'scroll' }}>
         <AnalysisOfSegmentalFat />
       </Card>
-      <Card style={{ textAlign: 'center' }}>
+      <Card>
         <BioelectricalImpedance />
       </Card>
       <Card style={{ overflowX: 'scroll' }}>
