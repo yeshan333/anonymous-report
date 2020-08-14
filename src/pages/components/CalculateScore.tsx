@@ -8,10 +8,15 @@ import { connect } from 'umi';
 import { Statistic, Row, Col } from 'antd';
 import { LikeOutlined } from '@ant-design/icons';
 import { Typography, Divider } from 'antd';
+import { PageLoading } from '@ant-design/pro-layout';
 
 const { Title, Paragraph } = Typography;
 
-const CalculateScore: React.FC<{}> = ({ dispatch, singlerecords }: any) => {
+const CalculateScore: React.FC<{}> = ({
+  dispatch,
+  singlerecords,
+  loading,
+}: any) => {
   const { Inbody_Score } = singlerecords;
   const [level, setLevel] = React.useState('不合格');
 
@@ -27,7 +32,9 @@ const CalculateScore: React.FC<{}> = ({ dispatch, singlerecords }: any) => {
     }
   });
 
-  return (
+  return loading ? (
+    <PageLoading />
+  ) : (
     <Typography>
       <Title level={3} style={{ textAlign: 'center' }}>
         健康评分
@@ -51,6 +58,9 @@ const CalculateScore: React.FC<{}> = ({ dispatch, singlerecords }: any) => {
   );
 };
 
-export default connect(({ singlerecords }: { singlerecords: any }) => ({
-  singlerecords,
-}))(CalculateScore);
+export default connect(
+  ({ singlerecords, loading }: { singlerecords: any; loading: any }) => ({
+    singlerecords,
+    loading: loading.models.singlerecords,
+  }),
+)(CalculateScore);

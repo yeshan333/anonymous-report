@@ -24,22 +24,8 @@ import AnalysisObesity from './components/AnalysisObesity';
 import AnalysisOfSegmentalFat from './components/AnalysisOfSegmentalFat';
 
 export default () => {
-  const [loading, setLoading] = useState<boolean>(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  }, []);
   return (
     <Layout>
-      {/*       <PageHeaderWrapper>
-        <div style={{ textAlign: 'center' as 'center' }}>
-          <Spin spinning={loading} size="large" />
-        </div>
-      </PageHeaderWrapper> */}
-      <div style={{ textAlign: 'center' as 'center' }}>
-        <Spin spinning={loading} size="large" />
-      </div>
       <Card style={{ overflowX: 'scroll' }}>
         <CalculateScore />
         <PeopleInfo />
