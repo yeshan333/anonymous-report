@@ -59,11 +59,11 @@ const columns = [
 ];
 
 const PeopleInfo = ({ dispatch, singlerecords }: any) => {
-  const { ID, Age, Gender, Height, DateTime } = singlerecords;
+  const { IDCard, Age, Gender, Height, DateTime } = singlerecords;
 
   const data = [
     {
-      ID: ID,
+      ID: IDCard,
       Age: Age,
       Gender: Gender,
       Height: Height,

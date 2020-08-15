@@ -1,6 +1,6 @@
 /*
-  * 组件：肥胖估计表
-*/
+ * 组件：肥胖估计表
+ */
 
 import React, { useState, useEffect } from 'react';
 import { connect } from 'umi';
@@ -26,9 +26,7 @@ const BIM = ({ value, lower, upper }: any) => {
 
   const onChange = e => {
     console.log('radio checked', e.target.value);
-    setSelect(
-      e.target.value
-    );
+    setSelect(e.target.value);
   };
 
   return (
@@ -38,7 +36,7 @@ const BIM = ({ value, lower, upper }: any) => {
       <Radio value={3}>超重</Radio>
     </Radio.Group>
   );
-}
+};
 
 const BodyFactPercentage = ({ value, lower, upper }: any) => {
   const [select, setSelect] = useState(0);
@@ -57,9 +55,7 @@ const BodyFactPercentage = ({ value, lower, upper }: any) => {
 
   const onChange = e => {
     console.log('radio checked', e.target.value);
-    setSelect(
-      e.target.value
-    );
+    setSelect(e.target.value);
   };
 
   return (
@@ -69,9 +65,15 @@ const BodyFactPercentage = ({ value, lower, upper }: any) => {
       <Radio value={3}>肥</Radio>
     </Radio.Group>
   );
-}
+};
 
-const EstimateOverweight = ({ dispatch, singlerecords }: { dispatch: any, singlerecords: SingleRecords }) => {
+const EstimateOverweight = ({
+  dispatch,
+  singlerecords,
+}: {
+  dispatch: any;
+  singlerecords: SingleRecords;
+}) => {
   const {
     BMI,
     Lower_Limit_BMI,
@@ -85,22 +87,26 @@ const EstimateOverweight = ({ dispatch, singlerecords }: { dispatch: any, single
     <Typography>
       <Title level={3} style={{ textAlign: 'center' }}>
         肥胖估计
-        </Title>
+      </Title>
       <Paragraph>
         <Row>
           <Col span={12} style={{ textAlign: 'center' }}>
-            <p>BIM</p>
+            <p>BMI</p>
             <BIM value={BMI} lower={Lower_Limit_BMI} upper={Upper_Limit_BMI} />
           </Col>
           <Col span={12} style={{ textAlign: 'center' }}>
             <p>体脂百分比</p>
-            <BodyFactPercentage value={Percent_Body_Fat} lower={Lower_Limit_Percent_Body_Fat} upper={Upper_Limit_Percent_Body_Fat} />
+            <BodyFactPercentage
+              value={Percent_Body_Fat}
+              lower={Lower_Limit_Percent_Body_Fat}
+              upper={Upper_Limit_Percent_Body_Fat}
+            />
           </Col>
         </Row>
       </Paragraph>
     </Typography>
   );
-}
+};
 
 export default connect(({ singlerecords }: { singlerecords: any }) => ({
   singlerecords,
