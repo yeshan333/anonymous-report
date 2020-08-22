@@ -1,9 +1,9 @@
 /*
-  * 人体成分分析表组件
-*/
+ * 人体成分分析表组件
+ */
 
 import React from 'react';
-import { connect } from 'umi';
+import { connect, Dispatch } from 'umi';
 import { Table, Typography } from 'antd';
 
 const { Title, Paragraph } = Typography;
@@ -28,7 +28,7 @@ const columns1 = [
     dataIndex: 'Lower',
     align: 'center' as 'center',
   },
-/*   {
+  /*   {
     key: 'Upper',
     title: '正常范围上界',
     colSpan: 0,
@@ -88,7 +88,13 @@ const columns1 = [
     },
 ]; */
 
-const AnalysisOfHumanComposition: React.FC = ({ dispatch, singlerecords }: any) => {
+const AnalysisOfHumanComposition = ({
+  dispatch,
+  singlerecords,
+}: {
+  dispatch: Dispatch;
+  singlerecords: SingleRecords;
+}) => {
   const {
     TBW,
     Lower_Limit_TBW,
@@ -96,16 +102,16 @@ const AnalysisOfHumanComposition: React.FC = ({ dispatch, singlerecords }: any) 
     Protein,
     Lower_Limit_Protein,
     Upper_Limit_Protein,
-    Mineral,                      // 无机盐（矿物质）
+    Mineral, // 无机盐（矿物质）
     Lower_Limit_Mineral,
     Upper_Limit_Mineral,
-    BFM,                          // BFM： Body FAt Mass：体脂肪
+    BFM, // BFM： Body FAt Mass：体脂肪
     Lower_Limit_BFM,
     Upper_Limit_BFM,
-    SLM,                          // SLM：Soft Lean Mass：肌肉重
+    SLM, // SLM：Soft Lean Mass：肌肉重
     Lower_Limit_SLM,
     Upper_Limit_SLM,
-    FFM,                          // FFM：Fat Free Mass：去脂体重
+    FFM, // FFM：Fat Free Mass：去脂体重
     Lower_Limit_FFM,
     Upper_Limit_FFM,
     Weight,
@@ -124,42 +130,42 @@ const AnalysisOfHumanComposition: React.FC = ({ dispatch, singlerecords }: any) 
     {
       key: '2',
       Project: '蛋白质',
-      Value: Protein,  // Protein
+      Value: Protein, // Protein
       Lower: `${Lower_Limit_Protein} - ${Upper_Limit_Protein}`,
       // Upper: Upper_Limit_Protein,
     },
     {
       key: '3',
       Project: '无机盐',
-      Value: Mineral,  // Mineral
+      Value: Mineral, // Mineral
       Lower: `${Lower_Limit_Mineral} - ${Upper_Limit_Mineral}`,
       // Upper: Upper_Limit_Mineral,
     },
     {
       key: '4',
       Project: '体脂肪',
-      Value: BFM,  // BFM
+      Value: BFM, // BFM
       Lower: `${Lower_Limit_BFM} - ${Upper_Limit_BFM}`,
       // Upper: Upper_Limit_BFM,
     },
     {
       key: '5',
       Project: '肌肉重',
-      Value: SLM,  // SLM
+      Value: SLM, // SLM
       Lower: `${Lower_Limit_SLM} - ${Upper_Limit_SLM}`,
       // Upper: Upper_Limit_SLM,
     },
     {
       key: '6',
       Project: '去脂体重',
-      Value: FFM,  // FFM
+      Value: FFM, // FFM
       Lower: `${Lower_Limit_FFM} - ${Upper_Limit_FFM}`,
       // Upper: Upper_Limit_FFM,
     },
     {
       key: '7',
       Project: '体重',
-      Value: Weight,  // Weight
+      Value: Weight, // Weight
       Lower: `${Lower_Limit_Weight} - ${Upper_Limit_Weight}`,
       // Upper: Upper_Limit_Weight,
     },
@@ -169,12 +175,19 @@ const AnalysisOfHumanComposition: React.FC = ({ dispatch, singlerecords }: any) 
     <Typography>
       <Title level={4}>人体成分分析</Title>
       <Paragraph>
-        <Table columns={columns1} dataSource={dataSource} bordered pagination={false} />
+        <Table
+          columns={columns1}
+          dataSource={dataSource}
+          bordered
+          pagination={false}
+        />
       </Paragraph>
     </Typography>
   );
-}
+};
 
-export default connect(({ singlerecords }: { singlerecords: any }) => ({
-  singlerecords,
-}))(AnalysisOfHumanComposition);
+export default connect(
+  ({ singlerecords }: { singlerecords: SingleRecords }) => ({
+    singlerecords,
+  }),
+)(AnalysisOfHumanComposition);

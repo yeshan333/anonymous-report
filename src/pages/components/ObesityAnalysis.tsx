@@ -1,8 +1,8 @@
 /*
-  * 肥胖分析表组件
-*/
+ * 肥胖分析表组件，统计图表
+ */
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Bar } from '@ant-design/charts';
 
 const ObesityAnalysis: React.FC = () => {
@@ -26,9 +26,8 @@ const ObesityAnalysis: React.FC = () => {
       text: '肥胖分析',
     },
     description: {
-        visible: true,
-        text: '附注：xxx正常值范围、不正常xxx、流弊xxx',
-
+      visible: true,
+      text: '附注：xxx正常值范围、不正常xxx、流弊xxx',
     },
     forceFit: true,
     data,

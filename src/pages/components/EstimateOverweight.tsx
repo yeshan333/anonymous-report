@@ -3,7 +3,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { connect } from 'umi';
+import { connect, Dispatch } from 'umi';
 import { Row, Col, Radio } from 'antd';
 import { Typography } from 'antd';
 
@@ -24,7 +24,7 @@ const BIM = ({ value, lower, upper }: any) => {
     }
   });
 
-  const onChange = e => {
+  const onChange = (e: any) => {
     console.log('radio checked', e.target.value);
     setSelect(e.target.value);
   };
@@ -53,7 +53,7 @@ const BodyFactPercentage = ({ value, lower, upper }: any) => {
     }
   });
 
-  const onChange = e => {
+  const onChange = (e: any) => {
     console.log('radio checked', e.target.value);
     setSelect(e.target.value);
   };
@@ -71,7 +71,7 @@ const EstimateOverweight = ({
   dispatch,
   singlerecords,
 }: {
-  dispatch: any;
+  dispatch: Dispatch;
   singlerecords: SingleRecords;
 }) => {
   const {
@@ -108,6 +108,8 @@ const EstimateOverweight = ({
   );
 };
 
-export default connect(({ singlerecords }: { singlerecords: any }) => ({
-  singlerecords,
-}))(EstimateOverweight);
+export default connect(
+  ({ singlerecords }: { singlerecords: SingleRecords }) => ({
+    singlerecords,
+  }),
+)(EstimateOverweight);

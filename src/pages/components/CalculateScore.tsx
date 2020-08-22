@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { connect } from 'umi';
+import { connect, Dispatch } from 'umi';
 import { Statistic, Row, Col } from 'antd';
 import { LikeOutlined } from '@ant-design/icons';
 import { Typography, Divider } from 'antd';
@@ -12,11 +12,15 @@ import { PageLoading } from '@ant-design/pro-layout';
 
 const { Title, Paragraph } = Typography;
 
-const CalculateScore: React.FC<{}> = ({
+const CalculateScore = ({
   dispatch,
   singlerecords,
   loading,
-}: any) => {
+}: {
+  dispatch: Dispatch;
+  singlerecords: SingleRecords;
+  loading: any;
+}) => {
   const { Inbody_Score } = singlerecords;
   const [level, setLevel] = React.useState('不合格');
 
@@ -59,7 +63,13 @@ const CalculateScore: React.FC<{}> = ({
 };
 
 export default connect(
-  ({ singlerecords, loading }: { singlerecords: any; loading: any }) => ({
+  ({
+    singlerecords,
+    loading,
+  }: {
+    singlerecords: SingleRecords;
+    loading: any;
+  }) => ({
     singlerecords,
     loading: loading.models.singlerecords,
   }),

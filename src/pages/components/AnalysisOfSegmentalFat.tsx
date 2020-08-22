@@ -3,37 +3,35 @@
  */
 
 import React from 'react';
-import { connect } from 'umi';
+import { connect, Dispatch } from 'umi';
 import { Progress, Typography, Row, Col } from 'antd';
 
-const { Title, Paragraph } = Typography;
+const calBar = (value: any, lower: any, upper: any) => {
+  value = parseFloat(value);
+  lower = parseFloat(lower);
+  upper = parseFloat(upper);
 
-/*
- * 计算进度条的值
- * value：测试值
- * lower：下界
- * upper：上界
- */
-const calculateBarValue = (value, lower, upper) => {
   let normal_interval_size = upper - lower; // 正常区间大小
   if (value < lower) {
     return (value / lower) * 33;
   } else if (value > upper) {
-    return 66 + (33 * value) / (100 - upper);
+    return 66 + (33 * value) / (242 - upper);
   } else if (lower < value && value < upper) {
     return 33 + (33 * (value - lower)) / normal_interval_size;
-  } else if (value > 100) {
+  } else if (value > 242) {
     return 100;
   } else {
     return 0;
   }
 };
 
+const { Title, Paragraph } = Typography;
+
 const AnalysisOfSegmentalFat = ({
   dispatch,
   singlerecords,
 }: {
-  dispatch: any;
+  dispatch: Dispatch;
   singlerecords: SingleRecords;
 }) => {
   const {
@@ -80,11 +78,7 @@ const AnalysisOfSegmentalFat = ({
           <Col span={4}>{BFM_of_Right_Arm} kg</Col>
           <Col span={12}>
             <Progress
-              percent={calculateBarValue(
-                BFM_of_Right_Arm,
-                Lower_Limit_BFM_of_Right_Arm,
-                Upper_Limit_BFM_of_Right_Arm,
-              )}
+              percent={calBar(BFM_Persents_of_Right_Arm, 80, 150)}
               showInfo={false}
               status="active"
             />
@@ -96,11 +90,7 @@ const AnalysisOfSegmentalFat = ({
           <Col span={4}>{BFM_of_Left_Arm} kg</Col>
           <Col span={12}>
             <Progress
-              percent={calculateBarValue(
-                BFM_Persents_of_Left_Arm,
-                Lower_Limit_BFM_of_Left_Arm,
-                Upper_Limit_BFM_of_Left_Arm,
-              )}
+              percent={calBar(BFM_Persents_of_Left_Arm, 80, 150)}
               showInfo={false}
               status="active"
             />
@@ -112,11 +102,7 @@ const AnalysisOfSegmentalFat = ({
           <Col span={4}>{BFM_of_Trunk} kg</Col>
           <Col span={12}>
             <Progress
-              percent={calculateBarValue(
-                BFM_of_Trunk,
-                Lower_Limit_BFM_of_Trunk,
-                Upper_Limit_BFM_of_Trunk,
-              )}
+              percent={calBar(BFM_Persents_of_Trunk, 80, 150)}
               showInfo={false}
               status="active"
             />
@@ -128,11 +114,7 @@ const AnalysisOfSegmentalFat = ({
           <Col span={4}>{BFM_of_Right_Leg} kg</Col>
           <Col span={12}>
             <Progress
-              percent={calculateBarValue(
-                BFM_of_Right_Leg,
-                Lower_Limit_BFM_of_Right_Leg,
-                Upper_Limit_BFM_of_Right_Leg,
-              )}
+              percent={calBar(BFM_Persents_of_Right_Leg, 80, 150)}
               showInfo={false}
               status="active"
             />
@@ -144,11 +126,7 @@ const AnalysisOfSegmentalFat = ({
           <Col span={4}>{BFM_of_Left_Leg} kg</Col>
           <Col span={12}>
             <Progress
-              percent={calculateBarValue(
-                BFM_of_Left_Leg,
-                Lower_Limit_BFM_of_Left_Leg,
-                Upper_Limit_BFM_of_Left_Leg,
-              )}
+              percent={calBar(BFM_Persents_of_Left_Leg, 80, 150)}
               showInfo={false}
               status="active"
             />
@@ -160,6 +138,8 @@ const AnalysisOfSegmentalFat = ({
   );
 };
 
-export default connect(({ singlerecords }: { singlerecords: any }) => ({
-  singlerecords,
-}))(AnalysisOfSegmentalFat);
+export default connect(
+  ({ singlerecords }: { singlerecords: SingleRecords }) => ({
+    singlerecords,
+  }),
+)(AnalysisOfSegmentalFat);

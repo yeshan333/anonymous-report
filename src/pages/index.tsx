@@ -2,18 +2,18 @@
  * 报告页组件
  */
 
-import ProLayout from '@ant-design/pro-layout';
-import React, { useState, useEffect } from 'react';
-import { Spin, Table, Card, Row, Col, Divider, Layout } from 'antd';
+// import { PageHeaderWrapper } from '@ant-design/pro-layout';
+import React from 'react';
+import { Card, Row, Col, Divider } from 'antd';
 import CalculateScore from './components/CalculateScore';
 import WeightControlTable from './components/WeightControl';
 import NutritionAssessmentTable from './components/NutritionAssessment';
 import EstimateOverweight from './components/EstimateOverweight';
-import ObesityAnalysis from './components/ObesityAnalysis';
+// import ObesityAnalysis from './components/ObesityAnalysis';
 import MuscleBalance from './components/MuscleBalance';
 
 import PeopleInfo from './components/PeopleInfo';
-import Tester from './components/Tester';
+// import Tester from './components/Tester';
 import AnalysisOfHumanComposition from './components/AnalysisOfHumanComposition';
 // import styles from './index.less';
 import ResearchProject from './components/ResearchProject';
@@ -25,8 +25,8 @@ import AnalysisOfSegmentalFat from './components/AnalysisOfSegmentalFat';
 
 export default () => {
   return (
-    <Layout>
-      <Card style={{ overflowX: 'scroll' }}>
+    <>
+      <Card>
         <CalculateScore />
         <PeopleInfo />
       </Card>
@@ -56,20 +56,20 @@ export default () => {
       <Card>
         <EstimateOverweight />
       </Card>
-      <Card style={{ overflowX: 'scroll' }}>
+      <Card>
         <AnalysisObesity />
       </Card>
-      <Card style={{ overflowX: 'scroll' }}>
+      <Card>
         <AnalysisOfMuscleFat />
         {/* <Tester /> */}
       </Card>
-      <Card style={{ overflowX: 'scroll' }}>
+      <Card>
         <AnalysisOfSegmentalFat />
       </Card>
-      <Card>
+      <Card style={{ textAlign: 'center' }}>
         <BioelectricalImpedance />
       </Card>
-      <Card style={{ overflowX: 'scroll' }}>
+      <Card>
         {/*
         <Row>
           <Col sm={24} md={12}><Card><AnalysisObesity /></Card></Col>
@@ -81,6 +81,6 @@ export default () => {
       <Card style={{ textAlign: 'center' }}>
         <h2>更多内容，敬请期待</h2>
       </Card>
-    </Layout>
+    </>
   );
 };

@@ -1,6 +1,6 @@
 /*
-  * 研究项目组件
-*/
+ * 研究项目组件
+ */
 
 import React from 'react';
 import { connect } from 'umi';
@@ -8,7 +8,7 @@ import { Row, Col, Typography } from 'antd';
 
 const { Title, Paragraph } = Typography;
 
-const data = {
+/* const data = {
   ICW: '24.6',
   ECW: '14.3',
   SMM: '29.9',
@@ -19,9 +19,9 @@ const data = {
   Upper_Limit_SMM: '29.4',
   Lower_Limit_ECW: '12.2',
   Upper_Limit_ECW: '14.9',
-}
+} */
 
-const ResearchProject: React.FC = ({dispathc, singlerecords}: any) => {
+const ResearchProject: React.FC = ({ dispathc, singlerecords }: any) => {
   const {
     ICW,
     Lower_Limit_ICW,
@@ -33,7 +33,6 @@ const ResearchProject: React.FC = ({dispathc, singlerecords}: any) => {
     Lower_Limit_SMM,
     Upper_Limit_SMM,
     Basal_Metabolic_Rate,
-
   } = singlerecords;
 
   return (
@@ -51,20 +50,27 @@ const ResearchProject: React.FC = ({dispathc, singlerecords}: any) => {
             <p>{ICW} L</p>
             <p>{ECW} L</p>
             <p>{SMM} kg</p>
-            <p>{Basal_Metabolic_Rate} kj/m<sup>2</sup>/h</p>
+            <p>
+              {Basal_Metabolic_Rate} kj/m<sup>2</sup>/h
+            </p>
           </Col>
           <Col span={8}>
-            <p>({Lower_Limit_ICW}-{Upper_Limit_ICW})</p>
-            <p>({Lower_Limit_ECW}-{Upper_Limit_ECW})</p>
-            <p>({Lower_Limit_SMM}-{Upper_Limit_SMM})</p>
+            <p>
+              ({Lower_Limit_ICW}-{Upper_Limit_ICW})
+            </p>
+            <p>
+              ({Lower_Limit_ECW}-{Upper_Limit_ECW})
+            </p>
+            <p>
+              ({Lower_Limit_SMM}-{Upper_Limit_SMM})
+            </p>
             {/* <p>{}-{}</p> */}
           </Col>
         </Row>
       </Paragraph>
     </Typography>
-
   );
-}
+};
 
 export default connect(({ singlerecords }: { singlerecords: any }) => ({
   singlerecords,

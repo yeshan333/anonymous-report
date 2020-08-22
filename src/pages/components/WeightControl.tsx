@@ -1,21 +1,26 @@
 /*
-  * 体重控制表组件
-*/
+ * 体重控制表组件
+ */
 
 import React from 'react';
-import { connect } from 'umi';
+import { connect, Dispatch } from 'umi';
 import { Typography, Col, Row } from 'antd';
 
 const { Title, Paragraph } = Typography;
 
-const WeightControlTable = ({ dispatch, singlerecords }: any) => {
-
+const WeightControlTable = ({
+  dispatch,
+  singlerecords,
+}: {
+  dispatch: Dispatch;
+  singlerecords: SingleRecords;
+}) => {
   const {
-    Target_Weight,                // 目标体重
-    Weight_Control,               // 体重控制
-    BFM_Control,                  // 脂肪控制
-    FFM_Control,                  // 肌肉控制
-   } = singlerecords;
+    Target_Weight, // 目标体重
+    Weight_Control, // 体重控制
+    BFM_Control, // 脂肪控制
+    FFM_Control, // 肌肉控制
+  } = singlerecords;
 
   return (
     <Typography>
@@ -42,6 +47,8 @@ const WeightControlTable = ({ dispatch, singlerecords }: any) => {
   );
 };
 
-export default connect(({ singlerecords }: { singlerecords: any }) => ({
-  singlerecords,
-}))(WeightControlTable);
+export default connect(
+  ({ singlerecords }: { singlerecords: SingleRecords }) => ({
+    singlerecords,
+  }),
+)(WeightControlTable);
